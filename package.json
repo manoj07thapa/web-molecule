@@ -6,9 +6,19 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^1.5.0",
+    "@headlessui/react": "^1.4.1",
+    "@heroicons/react": "^1.0.4",
+    "@tailwindcss/forms": "^0.3.3",
+    "axios": "^0.21.4",
+    "formik": "^2.2.9",
+    "mongoose": "^6.0.7",
     "next": "latest",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "react-spinners": "^0.11.0",
+    "swr": "^1.0.1",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
