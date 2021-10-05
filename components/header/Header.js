@@ -17,7 +17,7 @@ import {
 } from '@heroicons/react/outline';
 import { ChevronDownIcon } from '@heroicons/react/solid';
 import Link from 'next/link';
-import { useUser } from '@auth0/nextjs-auth0';
+import { signIn, signOut, useSession } from 'next-auth/client';
 import UserMenu from './UserMenu';
 
 const solutions = [
@@ -93,11 +93,11 @@ function classNames(...classes) {
 }
 
 export default function Header() {
-	const { user, error, isLoading } = useUser();
-
-	if (isLoading) return <div>Loading...</div>;
-	if (error) return <div>{error.message}</div>;
-	console.log(user);
+	const [ session, loading ] = useSession();
+	// console.log(session, loading);
+	if (loading && !session) {
+		return 'Loading...';
+	}
 	return (
 		<Popover className="relative bg-white">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -289,10 +289,19 @@ export default function Header() {
 						</Popover>
 					</Popover.Group>
 					<div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-						{user ? (
+						{/* {user ? (
 							<UserMenu user={user} />
 						) : (
-							<Link href="api/auth/login">
+							<Link href="">
+								<a className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
+									Sign in
+								</a>
+							</Link>
+						)} */}
+						{session ? (
+							<UserMenu session={session} />
+						) : (
+							<Link href="/api/auth/login">
 								<a className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
 									Sign in
 								</a>

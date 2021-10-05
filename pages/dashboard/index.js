@@ -2,9 +2,9 @@ import Sidebar from '../../components/dashboard/Sidebar';
 import CreateCourse from '../../components/dashboard/CreateCourse';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { getSession } from 'next-auth/client';
 
-export default withPageAuthRequired(function Dashboard({ categories }) {
+export default function Dashboard({ categories }) {
 	const { query } = useRouter();
 
 	return (
@@ -25,7 +25,7 @@ export default withPageAuthRequired(function Dashboard({ categories }) {
 			</div>
 		</div>
 	);
-});
+}
 
 // export async function getServerSideProps() {
 // 	await dbConnect();
