@@ -2,7 +2,6 @@ import Sidebar from '../../components/dashboard/Sidebar';
 import CreateCourse from '../../components/dashboard/CreateCourse';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { getSession } from 'next-auth/client';
 
 export default function Dashboard({ categories }) {
 	const { query } = useRouter();
@@ -16,8 +15,10 @@ export default function Dashboard({ categories }) {
 			</Head>
 			<div className="lg:flex  ">
 				<Sidebar />
-				<main className="flex-1 ">
-					{query.query === 'create-course' && <CreateCourse />}
+
+				<main className="flex-1 bg-gray-50  ">
+					<CreateCourse />
+					{/* {query.query === 'create-course' && <CreateCourse />} */}
 					{/* {query.query === 'create-resource' && <CreateResource />}
 					{query.query === 'create-category' && <AddCategory />}
 					{query.query === 'product-list' && <ProductList />} */}

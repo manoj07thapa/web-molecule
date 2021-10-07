@@ -5,9 +5,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { signOut } from 'next-auth/client';
 
-export default function UserMenu({ session }) {
+export default function UserMenu({ user }) {
 	const router = useRouter();
-	console.log('SESSION', session);
 	return (
 		<div className="">
 			<Menu as="div" className="relative inline-block text-left">
@@ -15,14 +14,14 @@ export default function UserMenu({ session }) {
 					<Fragment>
 						<div>
 							<Menu.Button className="focus:outline-none transition duration-500 ease-in-out transform hover:-translate-y-1">
-								{session.user.image && (
+								{user && (
 									<Image
 										className="rounded-full"
 										alt="brand logo"
 										objectFit="cover"
 										width={35}
 										height={35}
-										src={session.user.image}
+										src={user.picture}
 									/>
 								)}
 							</Menu.Button>
@@ -60,12 +59,8 @@ export default function UserMenu({ session }) {
 									</Menu.Item>
 									<Menu.Item>
 										{({ active }) => (
-											<Link href="/api/auth/signOut">
+											<Link href="/api/auth/logout">
 												<a
-													onClick={(e) => {
-														e.preventDefault();
-														signOut();
-													}}
 													className={`${active
 														? 'bg-yellow-300 text-white'
 														: 'text-gray-900'} group flex rounded-md items-center w-full px-2 py-2 text-sm`}
