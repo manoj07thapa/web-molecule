@@ -1,5 +1,9 @@
 import Sidebar from '../../components/dashboard/Sidebar';
 import CreateCourse from '../../components/dashboard/CreateCourse';
+import AddCategory from '../../components/dashboard/AddCategory';
+import AddLanguage from '../../components/dashboard/AddLanguage';
+import AddArea from '../../components/dashboard/AddArea';
+
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 
@@ -17,11 +21,14 @@ export default function Dashboard({ categories }) {
 				<Sidebar />
 
 				<main className="flex-1 bg-gray-50  ">
-					<CreateCourse />
-					{/* {query.query === 'create-course' && <CreateCourse />} */}
-					{/* {query.query === 'create-resource' && <CreateResource />}
-					{query.query === 'create-category' && <AddCategory />}
-					{query.query === 'product-list' && <ProductList />} */}
+					{query.query === 'create-course' && <CreateCourse />}
+					{query.query === 'create-category' && (
+						<div>
+							<AddCategory />
+							<AddLanguage />
+							<AddArea />
+						</div>
+					)}
 				</main>
 			</div>
 		</div>

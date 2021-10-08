@@ -1,12 +1,13 @@
 import { Disclosure, Transition } from '@headlessui/react';
 import { Fragment } from 'react';
 import Link from 'next/link';
-import router from 'next/router';
+import { useRouter } from 'next/router';
 
 export default function Create() {
+	const { query } = useRouter();
+	const router = useRouter();
 	console.log(router);
 
-	// const query = router.router.query.query;
 	return (
 		<Fragment>
 			<Disclosure className="pt-2">
@@ -41,7 +42,7 @@ export default function Create() {
 						>
 							<Disclosure.Panel className=" px-4 pt-4 pb-2 text-sm text-gray-500 ">
 								<div className="flex flex-col space-y-1 border-l-4 border-dashed border-purple-400 divide-y divide-purple-100">
-									{/* <Link
+									<Link
 										href={{
 											pathname: '/dashboard',
 											query: { query: 'create-course' }
@@ -54,8 +55,8 @@ export default function Create() {
 										>
 											Add Product
 										</a>
-									</Link> */}
-									{/* <Link
+									</Link>
+									<Link
 										href={{
 											pathname: '/dashboard',
 											query: { query: 'create-resource' }
@@ -82,7 +83,7 @@ export default function Create() {
 										>
 											Add Product category
 										</a>
-									</Link> */}
+									</Link>
 								</div>
 							</Disclosure.Panel>
 						</Transition>

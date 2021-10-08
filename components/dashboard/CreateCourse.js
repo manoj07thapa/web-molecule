@@ -3,7 +3,7 @@ import { Formik, Form, Field, FieldArray, ErrorMessage } from 'formik';
 import axios from 'axios';
 import MultipleFileUploadField from '../upload/MultipleFileUploadFields';
 import { courseSchema } from '../../validators/courseSchema';
-// import { Minus, Plus } from '@heroicons/react';
+import { PlusOutlined, MinusOutlined } from '../../icons/icons';
 
 export default function CreateProduct({ categories }) {
 	const initialValues = {
@@ -42,7 +42,7 @@ export default function CreateProduct({ categories }) {
 	};
 
 	return (
-		<div className="px-3 lg:ml-36 ">
+		<div className="px-3 ">
 			<div className="max-w-md mx-auto">
 				<h3 className="text-3xl font-bold mt-5 text-gray-700 border-b  border-gray-200">Create a course</h3>
 				<Formik
@@ -196,7 +196,7 @@ export default function CreateProduct({ categories }) {
 																</label>
 																{index > 0 && (
 																	<button type="button" onClick={() => remove(index)}>
-																		{/* <MinusOutlined /> */} -
+																		<MinusOutlined />
 																	</button>
 																)}
 																<button
@@ -204,7 +204,7 @@ export default function CreateProduct({ categories }) {
 																	onClick={() => push()}
 																	className=""
 																>
-																	{/* <PlusOutlined /> */} +
+																	<PlusOutlined />
 																</button>
 															</div>
 														</div>
